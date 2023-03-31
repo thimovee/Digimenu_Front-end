@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import Auth from "./pages/Auth";
+import "./styles/index.css";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import TemplateDetails from "./components/TemplateDetail";
+import Cart from "./pages/Cart";
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      {/* Laat een component zien op basis van de URL */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Laat een dynamisch TemplateDetails component zien op basis van de template id in de URL */}
+        <Route path="/templates/:id" element={<TemplateDetails />} />
+        <Route path="/profile" element={<Auth />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </>
   );
 }
-
-export default App;
